@@ -4,7 +4,11 @@ import "./Home.css";
 
 const Home = () => {
 
-    const [task, setTask] = useState([]);
+    const InitialArray = localStorage.getItem("task")
+    ?JSON.parse(localStorage.getItem("task"))
+    :[];
+
+    const [task, setTask] = useState(InitialArray);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
@@ -26,9 +30,7 @@ const Home = () => {
         setTask(filterArr);
     }
     useEffect(()=>{
-      task.map((index,item)=>{
-        console.log("added",task)
-      })
+      localStorage.setItem("setItem",JSON.stringify(task))
     },[task])
     return (
         <div className="container">
